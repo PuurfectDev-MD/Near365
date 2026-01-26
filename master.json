@@ -1,0 +1,29 @@
+{
+
+    "presents" : [
+
+        {
+            "date": "2026-10-1",
+            "music": "SOME MUSIC --file name",
+            "message": "TEXT AFFIRMATIONS"
+            
+            
+        },
+        
+        {
+            "date": "2026-10-2",
+            "music": "Apocalypse.wav",
+            "message": "TEXT AFFIRMATIONS"    
+        },
+        
+        {
+            "date": "2026-5-1",
+            "music": "Cocomelon.wav",
+            "message": "The world is a better place with cocomelon"
+            
+        }
+
+    
+    ]
+}
+
