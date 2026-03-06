@@ -1,0 +1,9 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "INMP441 Mic")(type "KiCad")(uri "D:/KiCad Resources/KiCad-Custom-Parts-main/KiCad-Custom-Parts-main/Microphone/inmp441_microphone_i2s.kicad_sym")(options "")(descr ""))
+  (lib (name "DS3231 Clock")(type "KiCad")(uri "D:/KiCad Resources/TC00500/TC00500.kicad_sym")(options "")(descr ""))
+  (lib (name "KY-040")(type "KiCad")(uri "D:/KiCad Resources/KY-040/KY-040.kicad_sym")(options "")(descr ""))
+  (lib (name "MAX98357A")(type "KiCad")(uri "D:/KiCad Resources/Adafruit MAX9837A/moduleschmatic.kicad_sym")(options "")(descr ""))
+  (lib (name "Adafruit Sd Card")(type "KiCad")(uri "D:/KiCad Resources/brekaout SD module/254.kicad_sym")(options "")(descr ""))
+  (lib (name "TTP223 capacitance touch")(type "KiCad")(uri "D:/KiCad Resources/ttp223/ZC440600.kicad_sym")(options "")(descr ""))
+)
