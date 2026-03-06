@@ -1,6 +1,6 @@
-# Near365 Gift 🎁
+# Wacky and cute-( self claimed :} ) Music Player 
 
-**Near365** is a smart, interactive daily gift device powered by an ESP32-S3. Designed as a personalized keepsake, it delivers unique music, affirmations, and helps brighten up someone's day, every single day pre-programmed schedule.
+**Music Player v1** is a interactive  media device (media form: music, voice recording, text, gifs? maybe video) powered by an ESP32-S3. Designed as a personalized gift,to play unique music, affirmations,  every single day pre-programmed schedule. v2 will have an APi endpoint to post voice recordings over the internet.
 
 ---
 
@@ -29,13 +29,17 @@ A custom 2-layer PCB design from kicad.
 ![PCB Layout](images/pcb.png)
 ![PCB Layout](images/pcb3dmodel.png)
 
+
+
+### Power Board
+![Power PCB](images/power_pcb.png)
+![Power traces](images/power_route.png)
 ### 3D Model for Case
 A custom 3d model case from fusion 360
 
 ![3D Model Render](images/3dcasefront.png)
 ![3D Model Render](images/3dcaseback.png)
-
-
+![3D Model Render](images/backplate_3dmodel.png)
 ---
 ##  Bill of Materials (BOM)
 
@@ -51,17 +55,27 @@ A custom 3d model case from fusion 360
 | **Microphone** | INMP441 I2S Digital Omnidirectional Mic      | 1        |
 | **RTC Module** | DS3231 High-Precision I2C RTC                | 1        |
 | **Storage Card** | 16GB Micro SD Card       | 1        |
-
+| **BMS Board** | Custom made battery management system      | 1        |
 ---
-Find the full BOM in the CSV file: [near365.csv](./near365.csv)
+
 
 ##  Project Structure
 
-* `/pages`: Contains the class logic for each UI state (`Daily`, `Music`, `Record`, `History`).
-* `/assets`: Fonts (`ArcadePix`), icons, and images.
+* `firmware/pages`: Contains the class logic for each UI state (`Daily`, `Music`, `Record`, `History`).
 * `main.py`: The primary async loop and state machine handler.
 * `setup.py`: Hardware initialization and pin mapping.
 * `master.json`: The central database for the daily gift schedule.
+
+
+
+## File Structure:
+
+* `/3d Model`: Contains fusion and 3d printing files for the case.
+* `/firmware`: Contains the code
+* `Kicad`: Kicad files (both power and main board)
+       * `Power_kicad`: Custom made bms system kicad project
+       * `main_kicad`: main pcb kicad project
+* `/images`: For images of README.md
 
 ---
 
