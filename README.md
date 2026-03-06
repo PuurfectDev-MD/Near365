@@ -4,6 +4,8 @@
 
 ---
 
+
+
 ## Features
 
 * **Daily Present:** Automatically fetches unique content (music and text(affiramtions/notes)) from an SD card based on the current date.
@@ -78,6 +80,11 @@ A custom 3d model case from fusion 360
 * `/images`: For images of README.md
 
 ---
+
+
+
+# Why build this?
+I built it becasue I really wanted ot get into making a custom esp32 chip board and happened to stumble upon a music palyer gift idea. And from there I spiralled into making the best version of my idea. It plays a different song and displays unique affiramtions from a predefined library to bringten up someones day. OFC my handcrafted playlist library is the biggest treasure :). You can build your own too! For yourself or for someone else. Good Luck >>
 
 
 *Created with love❤️.*
