@@ -1,6 +1,6 @@
 # Wacky and cute-( self claimed :} ) Music Player 
 
-**Music Player v1** is a interactive  media device (media form: music, voice recording, text, gifs and video possibly) powered by an ESP32-S3.I designed it as a personalized gift,to play unique music, affirmations,  every single day onpre-programmed schedule. v2 will have an APi endpoint to post voice recordings over the internet and oher cool feature. The device is a complete package for audio realted project and can be modifieied into other creative ideas like - (voice journal keeper, online music streaming and many more!)
+**Music Player v1** is a interactive  media device (media form: music, voice recording, text, gifs and video possibly) powered by an ESP32-S3.I designed it as a personalized gift,to play unique music, affirmations,  every single day onpre-programmed schedule. v2 will have an APi endpoint to post voice recordings over the internet and oher cool feature. The device is a complete package for audio related projects and can be modified into other creative ideas like - (voice journal keeper, online music streaming and many more!)
 
 ---
 
@@ -84,7 +84,7 @@ A custom 3d model case from fusion 360
 
 
 # Why build this?
-I built it becasue I really wanted to get into making a custom esp32 chip board and happened to stumble upon a music player gift idea. And from there I spiralled into making the best version of my idea. It plays a different song and displays unique affiramtions from a predefined library to bringten up someones day. OFC my handcrafted playlist library is the biggest treasure :). You can build your own too! For yourself or for someone else. Good Luck >> After you complete it, share it with from the info at https://manishd.is-a.dev/ .
+I built it becasue I really wanted to get into making a custom esp32 chip board and happened to stumble upon a music player gift idea. And from there I spiralled into making the best version of my idea. It plays a different song and displays unique affiramtions from a predefined library to bringten up someones day. OFC my handcrafted playlist library is the biggest treasure :). You can build your own too! For yourself or for someone else. Good Luck >> After you complete it, share it with me from the info at https://manishd.is-a.dev/ .
 
 
 *Created with love❤️.*
