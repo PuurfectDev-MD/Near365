@@ -58,6 +58,8 @@ A custom 3d model case from fusion 360
 | **RTC Module** | DS3231 High-Precision I2C RTC                | 1        |
 | **Storage Card** | 16GB Micro SD Card       | 1        |
 | **BMS Board** | Custom made battery management system      | 1        |
+> [!NOTE]
+> This is just a summary of the BOM. The complete BOM can be found in [`/BOM details/project.csv`](BOM%20details/project.csv)
 ---
 
 
