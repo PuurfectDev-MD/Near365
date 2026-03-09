@@ -1,6 +1,6 @@
 # Wacky and cute-( self claimed :} ) Music Player 
 
-**Music Player v1** is a interactive  media device (media form: music, voice recording, text, gifs and video possibly) powered by an ESP32-S3.I designed it as a personalized gift,to play unique music, affirmations,  every single day onpre-programmed schedule. v2 will have an APi endpoint to post voice recordings over the internet and oher cool feature. The device is a complete package for audio related projects and can be modified into other creative ideas like - (voice journal keeper, online music streaming and many more!)
+**Music Player v1** is a interactive  media device (media form: music, voice recording, text, gifs and video possibly) powered by an ESP32-S3.I designed it as a personalized gift,to play unique music, affirmations,  every single day onpre-programmed schedule. v2 will have an APi endpoint to post voice recordings over the internet and other cool features. The device is a complete package for audio related projects and can be modified into other creative ideas like - (voice journal keeper, online music streaming and many more!)
 
 ---
 
@@ -9,7 +9,7 @@
 ## Features
 
 * **Daily Present:** Automatically fetches unique content (music and text(affiramtions/notes)) from an SD card based on the current date.
-* **High-Fidelity Audio:** Uses I2S protocol with a MAX98357A DAC for clear, non-blocking WAV file playback.
+* **High-quality Audio:** Uses I2S protocol with a MAX98357A DAC for clear, non-blocking WAV file playback.
 * **Voice Recorder:** Record and save voice memos directly to the SD card for future playback ** Plans to stream it over the internet
 * **Music Player:** Plays music playlists from the sd card
 * **Peculiar Cute design** Cute 3d model case enclosure with a tounge sticking out 😛
@@ -78,6 +78,11 @@ A custom 3d model case from fusion 360
        * `Power_kicad`: Custom made bms system kicad project
        * `main_kicad`: main pcb kicad project
 * `/images`: For images of README.md
+* `/BOM details`: For BOM from Kicad and my cost compiled for the enitre project
+          *`project.csv`: For cost compiled BOM
+* `Gerber Files`: For JLCPCB or any other manufacturer
+          * `production_main`: Gerber for the main pcb
+          * `production_power`: Gerber for the BMS pcb
 
 ---
 
