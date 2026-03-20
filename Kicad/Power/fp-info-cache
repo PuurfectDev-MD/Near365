@@ -1,11 +1,4 @@
-29666731498187631
-Adafruit Sd breakout
-MODULE_254
-
-
-0
-8
-8
+29638427426747352
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -71861,13 +71854,6 @@ Yellow 5381 Series LED
 0
 2
 2
-MAX98357A
-ADAFRUIT I2S 3W CLASS D AMPLIFIER BREAKOUT - MAX98357A
-
-
-0
-50
-25
 MAX98357A_custom
 MAX98357A_Adafruit_Breakout
 
@@ -101016,13 +101002,6 @@ WiFi IEEE802.11 b/g/n
 0
 44
 44
-Real_TimeClk
-MODULE_TC00500
-
-
-0
-6
-6
 Relay_SMD
 Relay_2P2T_10x6mm_TE_IMxxG
 Signal Relay, 10x6mm, 2 Form C, Gull Wings, https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Data+Sheet%7F108-98001%7FZ.1%7Fpdf%7FEnglish%7FENG_DS_108-98001_Z.1.pdf
@@ -117403,97 +117382,6 @@ Varistor VF
 0
 2
 2
-adafruit dac
-1X06_ROUND_70
-
-
-0
-6
-6
-adafruit dac
-1X08_ROUND
-
-
-0
-8
-8
-adafruit dac
-MOUNTINGHOLE_2.5_PLATED
-
-
-0
-1
-1
-adafruit dac
-PLABEL0
-
-
-0
-0
-0
-adafruit dac
-PLABEL1
-
-
-0
-0
-0
-adafruit dac
-PLABEL3
-
-
-0
-0
-0
-adafruit dac
-PLABEL4
-
-
-0
-0
-0
-adafruit dac
-PLABEL7
-
-
-0
-0
-0
-adafruit dac
-PLABEL8
-
-
-0
-0
-0
-adafruit dac
-PLABEL9
-
-
-0
-0
-0
-adafruit dac
-PLABEL10
-
-
-0
-0
-0
-adafruit dac
-PLABEL11
-
-
-0
-0
-0
-adafruit dac
-PLABEL13
-
-
-0
-0
-0
 adafruitdac
 1X06_ROUND_70
 

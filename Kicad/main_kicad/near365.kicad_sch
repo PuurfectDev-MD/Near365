@@ -5590,6 +5590,12 @@
 		(members "SPI_MOSI" "SPI_MISO" "SPI_SCK")
 	)
 	(junction
+		(at 271.78 220.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "17837437-6e69-489e-906a-60d3912a6d5d")
+	)
+	(junction
 		(at 100.33 128.27)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5618,6 +5624,18 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "602a624c-3cf2-4cc6-a6e7-04dc7f51be17")
+	)
+	(junction
+		(at 271.78 226.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6e575721-3a8b-42f6-a474-5a7ff2037137")
+	)
+	(junction
+		(at 306.07 220.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "94254577-fc7c-48e8-a314-f53b17f03f34")
 	)
 	(junction
 		(at 39.37 256.54)
@@ -6138,7 +6156,7 @@
 	)
 	(wire
 		(pts
-			(xy 279.4 226.06) (xy 281.94 226.06)
+			(xy 265.43 226.06) (xy 271.78 226.06)
 		)
 		(stroke
 			(width 0)
@@ -6305,6 +6323,16 @@
 			(type default)
 		)
 		(uuid "4d1607fe-5fa5-47d9-928c-3a142b713fcf")
+	)
+	(wire
+		(pts
+			(xy 271.78 226.06) (xy 281.94 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4de6c3d4-990b-4d6c-a0b3-967cd6ed7737")
 	)
 	(wire
 		(pts
@@ -6668,7 +6696,7 @@
 	)
 	(wire
 		(pts
-			(xy 278.13 220.98) (xy 281.94 220.98)
+			(xy 266.7 220.98) (xy 271.78 220.98)
 		)
 		(stroke
 			(width 0)
@@ -6765,6 +6793,16 @@
 			(type default)
 		)
 		(uuid "98803ab5-593f-42ef-be39-9ebcb40267c2")
+	)
+	(wire
+		(pts
+			(xy 271.78 220.98) (xy 281.94 220.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "98dbde85-41ef-496d-a396-a13464181872")
 	)
 	(bus
 		(pts
@@ -6865,6 +6903,16 @@
 			(type default)
 		)
 		(uuid "ab703c8c-7d2f-45b4-9b7a-0335884784b9")
+	)
+	(wire
+		(pts
+			(xy 311.15 220.98) (xy 306.07 220.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abb84037-bc65-4d14-8ead-8f17dffa8793")
 	)
 	(wire
 		(pts
@@ -7278,6 +7326,16 @@
 	)
 	(wire
 		(pts
+			(xy 306.07 220.98) (xy 297.18 220.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f449c86a-1ee0-4dfd-ae93-af935559b038")
+	)
+	(wire
+		(pts
 			(xy 367.03 49.53) (xy 364.49 49.53)
 		)
 		(stroke
@@ -7680,7 +7738,7 @@
 	)
 	(global_label "RT_B"
 		(shape input)
-		(at 279.4 226.06 180)
+		(at 265.43 226.06 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7690,7 +7748,7 @@
 		)
 		(uuid "0dde66cb-dbc4-44c3-a4da-e0580e49e9a7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 271.9396 226.06 0)
+			(at 257.9696 226.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7900,7 +7958,7 @@
 	)
 	(global_label "RT_A"
 		(shape input)
-		(at 278.13 220.98 180)
+		(at 266.7 220.98 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7910,7 +7968,7 @@
 		)
 		(uuid "3e982f10-2bb5-44c2-9d94-96a1eae9b040")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 270.851 220.98 0)
+			(at 259.421 220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8054,7 +8112,7 @@
 	)
 	(global_label "RT_SW"
 		(shape input)
-		(at 297.18 220.98 0)
+		(at 311.15 220.98 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8064,7 +8122,7 @@
 		)
 		(uuid "62a6d572-b1f1-4ebf-9550-472cc6975b86")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 306.0313 220.98 0)
+			(at 320.0013 220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9158,6 +9216,73 @@
 		)
 	)
 	(symbol
+		(lib_id "ScottoKeebs:Placeholder_Resistor")
+		(at 306.07 217.17 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "24226c3a-bbe5-48e3-8a33-e17c2163d93a")
+		(property "Reference" "R9"
+			(at 306.07 217.424 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 308.102 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+			(at 304.292 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 306.07 217.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 306.07 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "33e98fd2-fd98-4337-93db-8bc0a6ff3b43")
+		)
+		(pin "1"
+			(uuid "57aae8ec-85a5-4314-9d83-d3a893b84e2a")
+		)
+		(instances
+			(project "near365"
+				(path "/702e8093-efb9-4525-a3d0-5bb710a12847"
+					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 389.89 125.73 90)
 		(unit 1)
@@ -9683,6 +9808,73 @@
 			(project "near365"
 				(path "/702e8093-efb9-4525-a3d0-5bb710a12847"
 					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ScottoKeebs:Placeholder_Resistor")
+		(at 271.78 229.87 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "428d8dba-9310-4f46-8d32-577275aed2b4")
+		(property "Reference" "R8"
+			(at 271.78 230.124 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 273.812 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+			(at 270.002 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 271.78 229.87 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 271.78 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "1ebd18b7-a316-42e2-b89a-d3382e8f16ed")
+		)
+		(pin "1"
+			(uuid "c54bea31-d089-4f6d-b3b2-792556432ae9")
+		)
+		(instances
+			(project "near365"
+				(path "/702e8093-efb9-4525-a3d0-5bb710a12847"
+					(reference "R8")
 					(unit 1)
 				)
 			)
@@ -10744,6 +10936,72 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
+		(at 271.78 233.68 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "65edcd4b-43fe-42fa-9af0-6c88df820caf")
+		(property "Reference" "#PWR047"
+			(at 271.78 229.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 271.78 238.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 271.78 233.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 271.78 233.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 271.78 233.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "aaf655ff-c5c4-4192-82f6-be981c657809")
+		)
+		(instances
+			(project "near365"
+				(path "/702e8093-efb9-4525-a3d0-5bb710a12847"
+					(reference "#PWR047")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
 		(at 97.79 19.05 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11009,6 +11267,73 @@
 			(project "near365"
 				(path "/702e8093-efb9-4525-a3d0-5bb710a12847"
 					(reference "#PWR041")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ScottoKeebs:Placeholder_Resistor")
+		(at 271.78 217.17 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6e7df9d4-aba2-44e5-8b16-1b7368619a74")
+		(property "Reference" "R7"
+			(at 271.78 217.424 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 273.812 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+			(at 270.002 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 271.78 217.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 271.78 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e0897646-064a-4652-93ff-40c26d73c9c3")
+		)
+		(pin "1"
+			(uuid "d2ccc1eb-3515-433e-a74b-d951e197c2cd")
+		)
+		(instances
+			(project "near365"
+				(path "/702e8093-efb9-4525-a3d0-5bb710a12847"
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -12505,6 +12830,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 306.07 213.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8f88d523-952a-458a-9aa4-e36a14925c78")
+		(property "Reference" "#PWR049"
+			(at 306.07 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 306.07 208.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 306.07 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 306.07 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 306.07 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "958db055-1fd6-481f-a9e5-37fa11cabcfa")
+		)
+		(instances
+			(project "near365"
+				(path "/702e8093-efb9-4525-a3d0-5bb710a12847"
+					(reference "#PWR049")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Diode:1N5819")
 		(at 146.05 256.54 0)
 		(unit 1)
@@ -13053,7 +13444,7 @@
 		(dnp no)
 		(uuid "b9465aff-d3ee-4551-bdd9-36afe028033f")
 		(property "Reference" "R6"
-			(at 206.502 112.776 0)
+			(at 205.74 112.776 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13105,6 +13496,72 @@
 			(project "near365"
 				(path "/702e8093-efb9-4525-a3d0-5bb710a12847"
 					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 271.78 213.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ba19f998-313a-41fb-8779-a19a0c3004a7")
+		(property "Reference" "#PWR048"
+			(at 271.78 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 271.78 208.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 271.78 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 271.78 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 271.78 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f566870f-ef2f-451c-ac9a-3eee2f9f1dc2")
+		)
+		(instances
+			(project "near365"
+				(path "/702e8093-efb9-4525-a3d0-5bb710a12847"
+					(reference "#PWR048")
 					(unit 1)
 				)
 			)
@@ -14553,7 +15010,7 @@
 		(dnp no)
 		(uuid "f5957d23-9af6-493d-a4ad-3aaabcbd3f67")
 		(property "Reference" "R5"
-			(at 206.502 103.886 0)
+			(at 205.486 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
