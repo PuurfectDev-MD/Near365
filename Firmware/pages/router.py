@@ -41,9 +41,9 @@ class UIRouter:
         else:
             print("Routing error: Key mismatch")
             
-    def process_input(self, btn1, btn2):
+    def process_input(self, btn1= False, btn2= False,sw =False,cw= False,acw= False):
         if self.active_input_handler:
-            self.active_input_handler(btn1, btn2, self)
+            self.active_input_handler(btn1, btn2,sw, cw, acw,self)
     
             
 

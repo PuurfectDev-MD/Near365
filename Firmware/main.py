@@ -6,6 +6,7 @@ from machine import Pin
 import uasyncio
 import context
 from actions.play_tone import play_tone
+from actions.helper import list_all_songs
 
 system = System_Init()
 system.run_all()
@@ -23,8 +24,7 @@ router = UIRouter()
 router.navigate_to("home")
 
 print("System successfully initialized")
-
-
+list_all_songs()
 
 async def monitor_buttons():
     print("Monitoring buttons states")
@@ -34,11 +34,16 @@ async def monitor_buttons():
     
     last_btn1_state = False
     last_btn1_state= False
+    last_en_sw_state = False
+    
+    last_encoder_val = hardware_controls.encoder_value
     
     while True:
         btn1_pressed = hardware_controls.is_btn1_pressed()
         btn2_pressed = hardware_controls.is_btn2_pressed()
+        sw_pressed = hardware_controls.is_en_sw_pressed()
         
+        encoder_changed = hardware_controls.read_encoder()
         current_time = time.ticks_ms()
 
         if time.ticks_diff(current_time, last_action_time) > debounce_delay:
@@ -46,13 +51,28 @@ async def monitor_buttons():
                 print("Button 1 pressed")
                 last_action_time = current_time
                 uasyncio.create_task(play_tone())
-                router.process_input(True, False)
+                router.process_input(btn1=True)
                 
             if btn2_pressed:
                 print("Button 2 pressed")
                 last_action_time = current_time
                 uasyncio.create_task(play_tone())
-                router.process_input(False, True)
+                router.process_input(btn2= True)
+            
+            if sw_pressed:
+                print("En SW pressed")
+                last_action_time = current_time
+                router.process_input(sw=True)
+                
+            if encoder_changed:
+                current_val = hardware_controls.encoder_value
+                
+                direction = current_val - last_encoder_val
+                
+                if direction > 0 :
+                    router.process_input(cw=True)
+                if direction <0:
+                    router.process_input(acw=True)
             
         
         await uasyncio.sleep_ms(20)

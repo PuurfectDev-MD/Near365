@@ -14,7 +14,7 @@ def build_home(parent, router):
     custom_button(parent, "Settings", lambda e: router.navigate_to("settings"))
     
     
-def homeInput_handler(btn1, btn2,router):
+def homeInput_handler(btn1, btn2, sw, cw, acw,router):
     if btn1:
         router.navigate_to("music")
     elif btn2:

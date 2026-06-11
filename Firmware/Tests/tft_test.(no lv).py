@@ -17,4 +17,3 @@ print("The TFT screen was initialized")
 
 system.display.draw_text(110, 220, "BOOTING...", ArcadePix, WHITE)
 time.sleep(5)
-

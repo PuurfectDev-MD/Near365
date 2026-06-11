@@ -5,7 +5,8 @@ import lvgl as lv
 import ili9xxx
 # master_file = master.json #file on sd card with all info   - stored on sd card
 # daily_file = daily.json #file info extracted on this for today (one day) -stored on esp flash
-
+from sdcard import SDCard
+import os
 
 
 WIFI_SSID = ""
@@ -22,9 +23,9 @@ I2C_SDA = 8
 I2C_SCL = 9
 
 SD_CS= 10
-SD_MOSI = 46
-SD_MISO = 35
-SD_SCK =45
+SD_MOSI = 9
+SD_MISO = 8
+SD_SCK =3
 
 TFT_CS = 1
 TFT_DC =2
@@ -69,38 +70,20 @@ class System_Init:
         #display configuartion
         self.display_width = 320
         self.display_height = 240
-        self.display_rotation = 1
+        self.display_rotation = 3
         
     def init_spi(self):
         print("Initializing SPI")
 
         try:
-            self.spi_tft = SPI(2, baudrate=10000000, sck=Pin(SPI_SCK), mosi=Pin(SPI_MOSI), miso=Pin(SPI_MISO))
-#             self.spi_sd= SPI(1, baudrate=10000000,sck= SD_SCK, mosi = Pin(SD_MOSI), miso = Pin(SD_MISO))
-#             
-            self.spi_initialized = True
+            self.spi_tft = SPI(2, baudrate=20000000, sck=Pin(SPI_SCK), mosi=Pin(SPI_MOSI), miso=Pin(SPI_MISO))
+            self.spi_sd= SPI(1, baudrate=4000000,sck=Pin(SD_SCK), mosi = Pin(SD_MOSI), miso = Pin(SD_MISO))
             return True
         
         except Exception as e:
             print(f"Init failed {e}")
             return False
         
-# 
-#     def init_i2c_clock(self):
-#         print("Initializing I2c")
-# 
-#         try:
-#             i2c = I2C(0, scl=Pin(I2C_SCL), sda=Pin(I2C_SDA), freq=400000)
-#             self.rtc = DS3231(i2c)
-#             print("I2c Clock Initalized")
-#             self.rtc_initialized= True
-# 
-#             # Scan for I2C devices
-#             devices = self.i2c.scan()
-#             print(f"Found {len(devices)} I2C device(s): {[hex(addr) for addr in devices]}")
-#         except Exception as e:
-#             print(f"Clock init failed {e}")
-#             self.rtc_initialized= False
 
 
     def init_display(self):
@@ -130,29 +113,27 @@ class System_Init:
             return False
         
 
-#     def init_sdcard(self):
-#         print("Sd inititialization")
-# 
-#         try:
-#             self.sd_card = SDCard(self.spi_sd, cs=Pin(SD_CS),freq=20000000 )
-# 
-#             #have to check which freq it can run at later
-#             os.mount(self.sd_card, "/sd")
-#             print(files)    #for testing only
-#             print("Sucess")
-#             self.sd_mounted =True
-#             return True
-# 
-#         except Exception as e:
-#             print(f"Failure {e}")
-#             self.sd_mounted=  False
-# 
+    def init_sdcard(self):
+        print("Sd inititialization")
+
+        try:
+            self.sd_card = SDCard(self.spi_sd, cs=Pin(SD_CS))
+            vfs = os.VfsFat(self.sd_card)
+            os.mount(self.sd_card, "/sd")
+            print(os.listdir("/sd"))   
+            print("Sucess on mounting sd card")
+            return True
+
+        except Exception as e:
+            print(f"Failure {e}")
+            self.sd_mounted=  False
+
     def init_i2s(self):
         print("Initializing I2S")
         
         try:
-            self.amp_en = Pin(AMP_SD, Pin.OUT)  #keeping this as output to control amp on/off
-            self.amp_en.value(1) #high
+            self.amp_en = Pin(AMP_SD, Pin.OUT)
+            self.amp_en.value(1) 
 
 
             self.i2s = I2S(0, 
@@ -162,7 +143,7 @@ class System_Init:
                            mode=I2S.TX, 
                            bits=16, 
                            format=I2S.MONO, 
-                           rate=16000, 
+                           rate=22050, 
                            ibuf=20000)
             
             print("I2S initialized")
@@ -182,10 +163,8 @@ class System_Init:
             lv.init()
             
         self.display_initialized = self.init_display()
-        
-#         self.init_i2c_clock()
-#         self.init_sdcard()
-#
+        self.sd_mounted = self.init_sdcard()
+
 
 
 
@@ -220,11 +199,8 @@ class Controls():
             
         return change_detected
     
-
-    def map_encoder_values(self, maxlimit):
-        # This one line handles both the upper and lower bounds
-        self.encoder_value = max(1, min(maxlimit, self.encoder_value))
-        return self.encoder_value
+    def is_en_sw_pressed(self):
+        return self.pin_sw.value() == 0
     
     def is_btn1_pressed(self):
         return self.btn1.value() == 0
