@@ -6,7 +6,12 @@ from machine import Pin
 import uasyncio
 import context
 from actions.play_tone import play_tone
-from actions.helper import list_all_songs
+from actions.helper import list_all_songs, connect_to_wifi, get_time, get_today_present
+
+
+connect_to_wifi()
+get_time()
+get_today_present()
 
 system = System_Init()
 system.run_all()

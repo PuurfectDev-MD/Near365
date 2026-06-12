@@ -14,12 +14,15 @@ class UIRouter:
         
         self.routes= {
             "home": build_home,
-            "music": build_music
+            "music": build_music,
+            "present": build_present
             }
         
         self.input_routes= {
             "home" : homeInput_handler,
-            "music" : musicInput_handler
+            "music" : musicInput_handler,
+            "present":presentInput_handler
+            
             }
         
     def navigate_to(self, route_name):

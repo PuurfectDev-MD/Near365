@@ -1,29 +1,17 @@
 {
-
-    "presents" : [
-
-        {
-            "date": "2026-10-1",
-            "music": "SOME MUSIC --file name",
-            "message": "TEXT AFFIRMATIONS"
-            
-            
-        },
-        
-        {
-            "date": "2026-10-2",
-            "music": "Apocalypse.wav",
-            "message": "TEXT AFFIRMATIONS"    
-        },
-        
-        {
-            "date": "2026-5-1",
-            "music": "Cocomelon.wav",
-            "message": "The world is a better place with cocomelon"
-            
-        }
-
-    
-    ]
+    "2026-06-12": {
+        "message": "This is a message to be shown just once in the entirety of its existance",
+        "audio": "Apocalypse",
+        "artist": "Cigarettes After Sex"
+    },
+    "2026-06-13": {
+        "message": "This is a another message. This needs to be long. This needs to be meaningful.",
+        "audio": "Tera_ban_jaunga",
+        "artist": "Akull"
+    },
+    "2026-06-14": {
+        "message": "This is a another message. This needs to be long. This needs to be meaningful.",
+        "audio": "Intezaar",
+        "artist": "Kaavish"
+    }
 }
-
