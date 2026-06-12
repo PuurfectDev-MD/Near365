@@ -45,6 +45,21 @@ async def monitor_buttons():
         
         encoder_changed = hardware_controls.read_encoder()
         current_time = time.ticks_ms()
+        
+        if encoder_changed:
+            current_val = hardware_controls.encoder_value
+            direction = current_val - last_encoder_val
+            
+            if direction != 0:
+                print(f"direction = {current_val} - {last_encoder_val} = {direction}")
+                
+                if direction > 0:
+                    router.process_input(cw=True)
+                else:
+                    router.process_input(acw=True)
+                    
+                last_encoder_val = current_val
+                
 
         if time.ticks_diff(current_time, last_action_time) > debounce_delay:
             if btn1_pressed:
@@ -64,18 +79,7 @@ async def monitor_buttons():
                 last_action_time = current_time
                 router.process_input(sw=True)
                 
-            if encoder_changed:
-                current_val = hardware_controls.encoder_value
-                
-                direction = current_val - last_encoder_val
-                
-                if direction > 0 :
-                    router.process_input(cw=True)
-                if direction <0:
-                    router.process_input(acw=True)
-            
-        
-        await uasyncio.sleep_ms(20)
+        await uasyncio.sleep_ms(5)
      
      
 async def refresh_lvgl():

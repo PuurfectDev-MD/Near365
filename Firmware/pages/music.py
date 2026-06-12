@@ -5,11 +5,14 @@ from pages.components import custom_button
 
 from actions.play_from_flash import playWavFromFlash
 from actions.play_from_sd import play_music_first_file
-
+from actions.play_from_sd import play_music_from_file
 
 
 def build_music(parent, router):
+    import context
     from context import songs_list as songs
+    
+    context.music_list_objs = []
     
     parent.set_flex_flow(lv.FLEX_FLOW.COLUMN)
     parent.set_flex_align(lv.FLEX_ALIGN.CENTER,lv.FLEX_ALIGN.CENTER,lv.FLEX_ALIGN.CENTER)
@@ -20,18 +23,24 @@ def build_music(parent, router):
     title.set_style_text_font(lv.font_montserrat_16, lv.PART.MAIN)
     
     list_obj = lv.list(parent)
-    list_obj.set_size(300, 200)
+    list_obj.set_style_bg_color(lv.color_hex(0x000000), lv.PART.MAIN)
+    list_obj.set_size(310, 230)
     list_obj.center()
+    
+    focus_style = lv.style_t()
+    focus_style.init()
+    focus_style.set_bg_color(lv.color_hex(0x444444))
+    focus_style.set_bg_opa(lv.OPA.COVER)
+    focus_style.set_text_color(lv.color_hex(0xFFFFFF))
     
     for song in songs:
         btn = list_obj.add_button(None, song["title"])
-        btn.set_user_data(song["filename"])
-        
-    
-    
-    uasyncio.create_task(play_music_first_file())  # to start the music task immediately.
-    # the play and pause is set by the context play event. It starts up as false. Gotta press play to start playback
+        btn.add_style(focus_style, lv.PART.MAIN | lv.STATE.FOCUSED)
+        context.music_list_objs.append(btn)
 
+    if context.music_list_objs: #if there is any 1 song, the first song is focused on startup
+        context.music_list_objs[0].add_state(lv.STATE.FOCUSED)
+    print("Music page is built fully")
     
 def musicInput_handler(btn1, btn2, sw, cw, acw, router):
     import context
@@ -42,20 +51,55 @@ def musicInput_handler(btn1, btn2, sw, cw, acw, router):
             context.play.set()  #sets the event to false
     elif btn2:
         router.navigate_to("home")
+    
+    
+    elif cw or acw:
+        old_btn = context.music_list_objs[context.song_focused_index]
+        old_btn.remove_state(lv.STATE.FOCUSED)
         
-    elif cw:
-        if context.volume <100:
-            context.volume= min(100, context.volume+2)
-            print("Voume increased to:",context.volume)
-        else:
-            print("Volume change outside bound")
-    elif acw:
-        if context.volume > 0:
-            context.volume = max(0,context.volume-2)
-            print("Voume decreased to:",context.volume)
-        else:
-            print("Volume change outside bound")
+        if cw:
+            if context.song_focused_index < (len(context.music_list_objs)-1):
+                context.song_focused_index +=1
+        elif acw:
+            if context.song_focused_index >0:
+                context.song_focused_index -=1
+                
+        new_btn = context.music_list_objs[context.song_focused_index]
+        new_btn.add_state(lv.STATE.FOCUSED)
+        new_btn.scroll_to_view(True)
+                
+    elif sw:
+        print("To play another song now")
+        selected_song = context.music_list_objs[context.song_focused_index]
+        
+        song = context.songs_list[context.song_focused_index]
+        filename = song["filename"]
+        
+        if context.audio_task is not None:
+            context.audio_task.cancel()
             
+        print("Ended previous song. Starting a new task")
+        context.play.set()
+        print(f"Playing music file in {filename}")
+        context.audio_task = uasyncio.create_task(play_music_from_file(filename))
+        
+#     elif cw:
+#         if context.volume <100:
+#             context.volume= min(100, context.volume+2)
+#             print("Voume increased to:",context.volume)
+#         else:
+#             print("Volume change outside bound")
+#     elif acw:
+#         if context.volume > 0:
+#             context.volume = max(0,context.volume-2)
+#             print("Voume decreased to:",context.volume)
+#         else:
+#             print("Volume change outside bound")
+#
+
+      
+
+
 
 
 
