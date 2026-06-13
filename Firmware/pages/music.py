@@ -4,7 +4,6 @@ import uasyncio
 from pages.components import custom_button
 
 from actions.play_from_flash import playWavFromFlash
-from actions.play_from_sd import play_music_first_file
 from actions.play_from_sd import play_music_from_file
 
 
@@ -24,7 +23,7 @@ def build_music(parent, router):
     
     list_obj = lv.list(parent)
     list_obj.set_style_bg_color(lv.color_hex(0x000000), lv.PART.MAIN)
-    list_obj.set_size(310, 230)
+    list_obj.set_size(310, 170)
     list_obj.center()
     
     focus_style = lv.style_t()
@@ -37,6 +36,20 @@ def build_music(parent, router):
         btn = list_obj.add_button(None, song["title"])
         btn.add_style(focus_style, lv.PART.MAIN | lv.STATE.FOCUSED)
         context.music_list_objs.append(btn)
+        
+    button_row = lv.obj(parent)
+    button_row.align(lv.ALIGN.BOTTOM_MID, 0, -35)
+    button_row.set_scroll_dir(lv.DIR.NONE)
+    button_row.set_flex_align(
+        lv.FLEX_ALIGN.SPACE_EVENLY, 
+        lv.FLEX_ALIGN.CENTER, 
+        lv.FLEX_ALIGN.CENTER
+    )
+    button_row.set_size(300, 50)
+
+
+    play = lv.label(button_row)
+    play.set_text(lv.SYMBOL.PLAY)
 
 
     context.music_list_objs[context.song_focused_index].add_state(lv.STATE.FOCUSED)
@@ -106,6 +119,8 @@ def musicInput_handler(btn1, btn2, sw, cw, acw, router):
 #
 
       
+
+
 
 
 

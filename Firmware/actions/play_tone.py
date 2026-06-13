@@ -19,17 +19,23 @@ def pre_generate_tone(sample_rate=22050, frequency=1500, duration=0.1):
 pre_generate_tone()
 
 async def play_tone():
-    global tone_buffer
-    if tone_buffer is None:
-        return
+    if not context.play.is_set():
+        global tone_buffer
+        if tone_buffer is None:
+            return
 
-    i2s = context.i2s_bus 
-    if i2s is None:
-        return
-    
-    try:
-        i2s.write(tone_buffer)
-    except Exception as e:
-        print("I2S Feedback Error:", e)
+        i2s = context.i2s_bus 
+        if i2s is None:
+            return
         
-    await uasyncio.sleep_ms(0)
+        try:
+            swriter = uasyncio.StreamWriter(i2s)
+            swriter.out_buf = memoryview(tone_buffer)
+            await swriter.drain()
+        except Exception as e:
+            print("I2S Feedback Error:", e)
+        finally:
+                
+            await uasyncio.sleep_ms(0)
+    
+

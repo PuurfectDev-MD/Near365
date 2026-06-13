@@ -144,7 +144,7 @@ class System_Init:
                            bits=16, 
                            format=I2S.MONO, 
                            rate=22050, 
-                           ibuf=20000)
+                           ibuf=40000)
             
             print("I2S initialized")
             return True

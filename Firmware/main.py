@@ -34,6 +34,30 @@ list_all_songs()
 print("System successfully initialized")
 
 
+async def ui_progress_refresher(router):
+    import context
+    current_angle = 0
+    while True:
+        # Check if a progress bar exists and is active on the current screen
+        if hasattr(router, 'active_progress_bar') and router.active_progress_bar:
+            try:
+                current_val = getattr(context, 'current_progress', 0)
+                router.active_progress_bar.set_value(current_val,0)
+            except Exception:
+                pass
+        
+        if hasattr(router, "active_spinning_cd") and router.active_spinning_cd:  #rotates the cd if the obj exits
+            if context.play.is_set(): #only if the music is playing
+                try:
+                    current_angle = (current_angle + 120) % 3600
+                    router.active_spinning_cd.set_style_transform_rotation(current_angle, 0)
+                except Exception:
+                    pass
+        
+        await uasyncio.sleep_ms(800)
+        
+
+
 async def monitor_buttons():
     print("Monitoring buttons states")
     
@@ -73,13 +97,13 @@ async def monitor_buttons():
             if btn1_pressed:
                 print("Button 1 pressed")
                 last_action_time = current_time
-                uasyncio.create_task(play_tone())
+                await play_tone()
                 router.process_input(btn1=True)
                 
             if btn2_pressed:
                 print("Button 2 pressed")
                 last_action_time = current_time
-                uasyncio.create_task(play_tone())
+                await play_tone()
                 router.process_input(btn2= True)
             
             if sw_pressed:
@@ -98,6 +122,7 @@ async def refresh_lvgl():
 async def main():
     uasyncio.create_task(monitor_buttons())
     uasyncio.create_task(refresh_lvgl())
+    uasyncio.create_task(ui_progress_refresher(router))
     
     while True:
         await uasyncio.sleep_ms(1000)

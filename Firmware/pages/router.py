@@ -10,6 +10,8 @@ class UIRouter:
         self.current_container = None
         
         self.active_input_handler = None
+        self.active_progress_bar = None
+        self.active_spinning_cd = None
         
         self.scr.set_style_bg_color(lv.color_hex(0x000000), lv.PART.MAIN)
         
@@ -31,6 +33,8 @@ class UIRouter:
     def navigate_to(self, route_name, **kwargs): #**kwargs is to wrap custom paramters for pages in a dict
         print(f"Switching viiew to  {route_name}")
         
+        self.active_progress_bar = None
+        self.active_spinning_cd =None
         if self.current_container:
             self.current_container.delete()
             
