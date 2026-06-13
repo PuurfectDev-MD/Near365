@@ -1,7 +1,8 @@
 import lvgl as lv
 from pages.home import build_home, homeInput_handler
 from pages.music import build_music,musicInput_handler
-
+from pages.present import build_present,presentInput_handler
+from pages.song import build_song, songInput_handler
 
 class UIRouter:
     def __init__(self):
@@ -15,17 +16,19 @@ class UIRouter:
         self.routes= {
             "home": build_home,
             "music": build_music,
-            "present": build_present
+            "present": build_present,
+            "song" : build_song
             }
         
         self.input_routes= {
             "home" : homeInput_handler,
             "music" : musicInput_handler,
-            "present":presentInput_handler
+            "present":presentInput_handler,
+            "song":songInput_handler
             
             }
         
-    def navigate_to(self, route_name):
+    def navigate_to(self, route_name, **kwargs): #**kwargs is to wrap custom paramters for pages in a dict
         print(f"Switching viiew to  {route_name}")
         
         if self.current_container:
@@ -38,7 +41,7 @@ class UIRouter:
         
         
         if route_name in self.routes:
-            self.routes[route_name](self.current_container, self)
+            self.routes[route_name](self.current_container, self, **kwargs)
             self.active_input_handler = self.input_routes[route_name]
             
         else:
@@ -49,4 +52,6 @@ class UIRouter:
             self.active_input_handler(btn1, btn2,sw, cw, acw,self)
     
             
+
+
 

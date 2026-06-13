@@ -47,6 +47,7 @@ async def play_music_from_file(filepath):
         path = f"/sd/{filepath}"
         swriter = uasyncio.StreamWriter(audio_out)
         
+        print("Playing the file at: " , path)
         with open(path, "rb") as wav_file:
             _ = wav_file.seek(44)
             

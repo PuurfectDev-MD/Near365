@@ -1,6 +1,9 @@
 import lvgl as lv
+from actions.play_from_sd import play_music_from_file
+import uasyncio
 
 def build_present(parent, router):
+    import context
     from context import today_present
     
     today_message = today_present.get("message", "No message idk why. something went wrong")
@@ -43,35 +46,28 @@ def build_present(parent, router):
 
     label_artist.set_style_text_opa(lv.OPA._60, 0)
     
+    if not title == "unknown":
+        print("Playing the song now - ", title)
+        
+        if context.audio_task is not None:
+            context.audio_task.cancel()
+        context.play.set()
+        context.audio_task = uasyncio.create_task(play_music_from_file(f"{title}.wav"))
+        
+        
     
-#     parent.set_flex_flow(lv.FLEX_FLOW.COLUMN)
-#     parent.set_flex_align(lv.FLEX_ALIGN.CENTER, lv.FLEX_ALIGN.CENTER,lv.FLEX_ALIGN.CENTER)
-#     parent.set_style_pad_row(15, lv.PART.MAIN)
-#     
-#     main_message = lv.container(parent)
-#     main_message.set_flex_flow(lv.FLEX_FLOW.COLUMN)
-#     main_message.set_flex_align(lv.FLEX_ALIGN.CENTER, lv.FLEX_ALIGN.CENTER,lv.FLEX_ALIGN.CENTER)
-#     
-#     music_container = lv.container(parent)
-#     music_container.set_flex_flow(lv.FLEX_FLOW.ROW)
-#     music_container.set_flex_align(lv.FLEX_ALIGN.BOTTOM, lv.FLEX_ALIGN.CENTER,lv.FLEX_ALIGN.CENTER)
-#     
-#     music_icon = lv.label(music_container)
-#     music_icon.set_text(lv.SYMBOL.MUSIC)
-#     
-#     music_label = lv.label(music_container)
-#     music_label.set_text("Music title")
-#     
-#     main_message_label = lv.label(main_message)
-#     main_message_label.set_text("This is the main message")
-#     main_message_label.set_style_text_font(lv.font_montserrat_16, lv.PART.MAIN)
-#     print("The page is built fully")
-
-
     
 def presentInput_handler(btn1, btn2, sw, cw, acw, router):
+    import context
     if btn1:
         router.navigate_to("home")
+        
     elif btn2:
-        router.navigate_to("music")
+        if context.play.is_set():
+            context.play.clear() #sets the event to false to stop the music
+        else:
+            context.play.set()  #sets the event to false
+
+
+
 

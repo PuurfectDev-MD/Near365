@@ -21,6 +21,6 @@ API_URL = "https://timeapi.io/api/v1/time/current/utc"
 
 current_date = ""
 
-
-today_present = []
+now_playing_index= 0
+today_present = {}
 

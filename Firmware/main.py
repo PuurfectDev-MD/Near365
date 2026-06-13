@@ -9,9 +9,13 @@ from actions.play_tone import play_tone
 from actions.helper import list_all_songs, connect_to_wifi, get_time, get_today_present
 
 
-connect_to_wifi()
-get_time()
-get_today_present()
+hardware_controls = Controls()
+if not hardware_controls.is_btn1_pressed: #override the wifi connnection logic- for testing
+    connect_to_wifi()
+    get_time()
+    get_today_present()
+else:
+    print("Did not try to connect to the internet. No time loaded. No present loaded")
 
 system = System_Init()
 system.run_all()
@@ -23,13 +27,12 @@ context.i2s_bus = system.i2s
 if context.i2s_bus:
     print("context set")
 
-hardware_controls = Controls()
-
 router = UIRouter()
 router.navigate_to("home")
 
-print("System successfully initialized")
 list_all_songs()
+print("System successfully initialized")
+
 
 async def monitor_buttons():
     print("Monitoring buttons states")

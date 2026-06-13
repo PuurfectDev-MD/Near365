@@ -38,20 +38,25 @@ def build_music(parent, router):
         btn.add_style(focus_style, lv.PART.MAIN | lv.STATE.FOCUSED)
         context.music_list_objs.append(btn)
 
-    if context.music_list_objs: #if there is any 1 song, the first song is focused on startup
-        context.music_list_objs[0].add_state(lv.STATE.FOCUSED)
+
+    context.music_list_objs[context.song_focused_index].add_state(lv.STATE.FOCUSED)
+        
     print("Music page is built fully")
     
 def musicInput_handler(btn1, btn2, sw, cw, acw, router):
     import context
     if btn1:
-        if context.play.is_set():
-            context.play.clear() #sets the event to false to stop the music
-        else:
-            context.play.set()  #sets the event to false
-    elif btn2:
         router.navigate_to("home")
-    
+
+        
+    elif btn2:
+        playing_song = context.songs_list[context.now_playing_index]["title"]
+        router.navigate_to("song", songtitle =playing_song, time="5:00") # have to set up time later
+       
+#         if context.play.is_set():
+#             context.play.clear() #sets the event to false to stop the music
+#         else:
+#             context.play.set()  #sets the event to false
     
     elif cw or acw:
         old_btn = context.music_list_objs[context.song_focused_index]
@@ -81,7 +86,10 @@ def musicInput_handler(btn1, btn2, sw, cw, acw, router):
         print("Ended previous song. Starting a new task")
         context.play.set()
         print(f"Playing music file in {filename}")
+        context.now_playing_index= context.song_focused_index
+        print("Currently playing song:", context.now_playing_index)
         context.audio_task = uasyncio.create_task(play_music_from_file(filename))
+       
         
 #     elif cw:
 #         if context.volume <100:
