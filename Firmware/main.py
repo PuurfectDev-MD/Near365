@@ -1,5 +1,6 @@
 import lvgl as lv
 import time
+import random
 from setup_test import System_Init, Controls
 from pages.router import UIRouter
 from machine import Pin
@@ -9,23 +10,29 @@ from actions.play_tone import play_tone
 from actions.helper import list_all_songs, connect_to_wifi, get_time, get_today_present
 
 
+last_states = [False, False, False, False]
+
 hardware_controls = Controls()
+print("Initiated inputs")
+time.sleep_ms(300)
 if not hardware_controls.is_btn1_pressed: #override the wifi connnection logic- for testing
-    connect_to_wifi()
+    context.wifi_connected = connect_to_wifi()
     get_time()
     get_today_present()
 else:
     print("Did not try to connect to the internet. No time loaded. No present loaded")
+    context.wifi_connected = False
 
 system = System_Init()
 system.run_all()
 time.sleep_ms(100)
 print("System init done")
 
-context.i2s_bus = system.i2s
+current_states=[context.wifi_connected,system.sd_mounted,bool(context.today_present),bool(context.current_date)]
+                    #wifi connected?          sdcard all good?      present loaded?           date loaded?
 
-if context.i2s_bus:
-    print("context set")
+
+context.i2s_bus = system.i2s
 
 router = UIRouter()
 router.navigate_to("home")
@@ -34,7 +41,7 @@ list_all_songs()
 print("System successfully initialized")
 
 
-async def ui_progress_refresher(router):
+async def ui_states_refresher(router):
     import context
     current_angle = 0
     while True:
@@ -53,7 +60,31 @@ async def ui_progress_refresher(router):
                     router.active_spinning_cd.set_style_transform_rotation(current_angle, 0)
                 except Exception:
                     pass
-        
+        if hasattr(router, "active_anim_bars") and router.active_anim_bars:
+            try:
+                for bar in router.active_anim_bars:
+                    new_height = random.randint(30, 80)
+                    bar.set_height(new_height)
+            except Exception:
+                pass
+            
+        if last_states != current_states:  #checks wether states changed for features and updates the UI.
+            try:
+                old_wifi, old_sd, old_gift, old_clock = last_states
+                new_wifi, new_sd, new_gift, new_clock = current_states
+                
+                if old_wifi != new_wifi:
+                    context.home_logo_objs[0].set_style_text_color(lv.color_hex(0x228B22), 0)
+                if old_sd != new_sd:
+                    context.home_logo_objs[1].set_style_text_color(lv.color_hex(0x228B22),0)
+                if old_gift != new_gift:
+                    context.home_logo_objs[2].set_style_line_color(lv.color_hex(0x228B22),0)
+                if old_clock != new_clock:
+                    context.home_logo_objs[3].set_style_line_color(lv.color_hex(0x228B22),0)
+            except:
+                pass
+                
+                
         await uasyncio.sleep_ms(800)
         
 
@@ -122,7 +153,7 @@ async def refresh_lvgl():
 async def main():
     uasyncio.create_task(monitor_buttons())
     uasyncio.create_task(refresh_lvgl())
-    uasyncio.create_task(ui_progress_refresher(router))
+    uasyncio.create_task(ui_states_refresher(router))
     
     while True:
         await uasyncio.sleep_ms(1000)

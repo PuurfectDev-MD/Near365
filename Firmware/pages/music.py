@@ -17,6 +17,8 @@ def build_music(parent, router):
     parent.set_flex_align(lv.FLEX_ALIGN.CENTER,lv.FLEX_ALIGN.CENTER,lv.FLEX_ALIGN.CENTER)
     parent.set_style_pad_row(20, lv.PART.MAIN)
     
+    parent.set_scroll_dir(lv.DIR.NONE)
+    
     title = lv.label(parent)
     title.set_text("Music")
     title.set_style_text_font(lv.font_montserrat_16, lv.PART.MAIN)
@@ -63,7 +65,10 @@ def musicInput_handler(btn1, btn2, sw, cw, acw, router):
 
         
     elif btn2:
-        playing_song = context.songs_list[context.now_playing_index]["title"]
+        if context.now_playing_index == -1:
+            playing_song = "No song playing at the moment"
+        else:
+            playing_song = context.songs_list[context.now_playing_index]["title"]
         router.navigate_to("song", songtitle =playing_song, time="5:00") # have to set up time later
        
 #         if context.play.is_set():

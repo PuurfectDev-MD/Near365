@@ -158,6 +158,8 @@ def songInput_handler(btn1, btn2, sw, cw, acw, router):
         
         if context.audio_task:
             context.audio_task.cancel()
+        
+        context.play.set()
         context.audio_task = uasyncio.create_task(play_music_from_file(filename))
         
     elif btn2:
@@ -175,6 +177,7 @@ def songInput_handler(btn1, btn2, sw, cw, acw, router):
         if context.audio_task:
             context.audio_task.cancel()
         
+        context.play.set()
         context.audio_task=uasyncio.create_task(play_music_from_file(filename))
         
         

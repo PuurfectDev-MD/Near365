@@ -12,6 +12,7 @@ class UIRouter:
         self.active_input_handler = None
         self.active_progress_bar = None
         self.active_spinning_cd = None
+        self.active_anim_bars = None
         
         self.scr.set_style_bg_color(lv.color_hex(0x000000), lv.PART.MAIN)
         
@@ -35,6 +36,8 @@ class UIRouter:
         
         self.active_progress_bar = None
         self.active_spinning_cd =None
+        self.active_anim_bar = None
+        
         if self.current_container:
             self.current_container.delete()
             
@@ -56,6 +59,8 @@ class UIRouter:
             self.active_input_handler(btn1, btn2,sw, cw, acw,self)
     
             
+
+
 
 
 

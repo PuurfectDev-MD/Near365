@@ -50,10 +50,12 @@ def connect_to_wifi():
             attempts += 1
             
             if attempts % 10 == 0:
-                print("Still trying, re-sending credentials...")
-                sta_if.connect(SSID, PASS)
+                print("Alot of attempts done. Cant connect")
+                return False
             
     print("Connected to wifi with IP:", sta_if.ifconfig()[0])
+    return True
+    
         
 
         
