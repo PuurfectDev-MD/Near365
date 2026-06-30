@@ -1,9 +1,10 @@
 # Wacky and cute- *self claimed :)* Music Player 
 
+![Build picture](images/build1.png)
+
 **Music Player v1** is a interactive  media device (media form: music, voice recording, text, gifs and video possibly) powered by an ESP32-S3.I designed it as a personalized gift,to play unique music, affirmations,  every single day onpre-programmed schedule. v2 will have an APi endpoint to post voice recordings over the internet and other cool features. The device is a complete package for audio related projects and can be modified into other creative ideas like - (voice journal keeper, online music streaming and many more!)
 
 ---
-
 
 
 ## Features
@@ -92,6 +93,71 @@ A custom 3d model case from fusion 360
 
 # Why build this?
 I built it becasue I really wanted to get into making a custom esp32 chip board and happened to stumble upon a music player gift idea. And from there I spiralled into making the best version of my idea. It plays a different song and displays unique affiramtions from a predefined library to bringten up someones day. OFC my handcrafted playlist library is the biggest treasure :). You can build your own too! For yourself or for someone else. Good Luck >> After you complete it, share it with me from the info at https://manishd.is-a.dev/ .
+
+
+# My build
+
+### What Works Perfectly:
+* **Playback:** Successfully fetches scheduled daily gifts/affirmations and plays audio
+* **Network & Time Sync:** Connects to the internet to update and synchronize time data via API
+* **Custom UI:** The custom LVGL-based TFT user interface turned out beautifully and performs well 
+
+### Improvements that could better my build:
+1. **The BMS Architecture:** Looking back, splitting the power/BMS circuit onto a separate board added unnecessary assembly complexity. For v2, the power management circuit will on a singl PCB.
+2. **I2S Audio Recording:** While standalone microphone test scripts work flawlessly, fully integrating the voice-recording firmware into the main async package remains a work-in-progress becasue of some pin conflict
+3. **Prototyping Materials Matter:** Using standard breadboard jumper wires and low-quality solder wire made internal routing extremely messy and prone to weak joints and gave me a veryvery hard time during building. This also made the final result messy and prone to breaking down/short ciruit.
+4. **Hardware Casualty:** During the final hardware assembly stages, the TFT display took some physical damage which was just devestating. But it works kinda alright so fine i guess.
+
+<details>
+<summary><b This is the tft after damage</b></summary>
+<br />
+<p align="center">
+  <img src="images/build6.png" alt="Internal Circuitry and Wiring" width="70%"/>
+  <br />
+  <sub>A look inside the shell showing the ESP32 connection points and the independent power board architecture.</sub>
+</p>
+</details>
+
+
+---
+> 💡 **Note:** This video was recorded during early testing. Some UI components shown in the gallery below are not visible in the clip. use the static images for final UI reference.
+
+#### From the outside
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">
+      <img src="images/build1.png" alt="Hardware Front View" width="100%"/>
+      <br />
+      <sub><b>Enclosure Assembly</b></sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="images/build2.png" alt="Hardware Angled View" width="100%"/>
+      <br />
+      <sub><b>Wacky Cute Tongue Profile 😛</b></sub>
+    </td>
+  </tr>
+</table>
+
+#### UI
+<table width="100%">
+  <tr>
+    <td width="33%" align="center">
+      <img src="images/build5.png" alt="UI Screen Boot" width="100%"/>
+      <br />
+      <sub><b>Home</b></sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="images/build3.png" alt="UI Menu Layout" width="100%"/>
+      <br />
+      <sub><b>Music Screen</b></sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="images/build4.png" alt="Assembled Face" width="100%"/>
+      <br />
+      <sub><b>Gift screen</b></sub>
+    </td>
+  </tr>
+</table>
 
 
 
