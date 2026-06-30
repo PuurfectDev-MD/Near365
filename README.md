@@ -109,12 +109,12 @@ I built it becasue I really wanted to get into making a custom esp32 chip board 
 4. **Hardware Casualty:** During the final hardware assembly stages, the TFT display took some physical damage which was just devestating. But it works kinda alright so fine i guess.
 
 <details>
-<summary><b This is the tft after damage</b></summary>
+<summary><b> This is the tft after damage</b></summary>
 <br />
 <p align="center">
   <img src="images/build6.png" alt="Internal Circuitry and Wiring" width="70%"/>
   <br />
-  <sub>A look inside the shell showing the ESP32 connection points and the independent power board architecture.</sub>
+  <sub>It works though so its fine guess.</sub>
 </p>
 </details>
 
